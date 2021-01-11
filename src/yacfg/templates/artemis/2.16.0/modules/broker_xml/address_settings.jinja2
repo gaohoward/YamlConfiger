@@ -2,7 +2,7 @@
     <!-- Address Settings configuration -->
         <address-settings>
             {% for address_setting in broker_xml.address_settings %}
-            <address-setting match="{{ address_setting.match }}">
+            <address-setting match="{{ address_setting.match|overridevalue(address_setting.match) }}">
                 {% if address_setting.dead_letter_address is defined %}
                 <dead-letter-address>{{ address_setting.dead_letter_address|overridevalue(address_setting.match + 'dead_letter_address') }}</dead-letter-address>
                 {% endif %}
